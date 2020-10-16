@@ -4,5 +4,30 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  font-size: 14px;
+  background: #10161a0d;
+  min-height: 100vh;
+}
+img {
+  width: 60px;
+  padding-top: 20px;
+}
+.line {
+  margin: 10px 0;
+  background: #fff;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+em {
+  font-style: normal;
+  padding: 2px 6px;
+  background-color: rgb(231, 227, 225);
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+  box-shadow: 1px 1px 5px #c4c3c3;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
