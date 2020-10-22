@@ -2,6 +2,7 @@
 
 import { createApp } from 'vue';
 import App from "./App.vue";
+import router from "./router"
 import 'vant/lib/index.css';
 import './index.css'
 
@@ -30,4 +31,4 @@ const config = {
 }
 app.config = config
 
-app.mount('#app')
+app.use(router).mount('#app')
