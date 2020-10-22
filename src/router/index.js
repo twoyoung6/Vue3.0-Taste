@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const HelloWorld = () => import(/* webpackChunkName: "HelloWorld" */ "../components/HelloWorld.vue");
 const Compsition = () => import(/* webpackChunkName: "Compsition" */ "../components/Compsition.vue");
 const Set = () => import(/* webpackChunkName: "Set" */ "../components/Set.vue");
+const TodoList = () => import(/* webpackChunkName: "Set" */ "../views/TodoList.vue");
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 export default createRouter({
@@ -21,5 +22,9 @@ export default createRouter({
       path: '/set',
       name: 'Set',
       component: Set
+    }, {
+      path: '/todoList',
+      name: 'TodoList',
+      component: TodoList
     }]
 })
