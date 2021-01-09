@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { reactive, computed, watch } from "vue";
+import { reactive, computed, watchEffect } from "vue";
 
 export default {
   props: {
@@ -29,7 +29,7 @@ export default {
       mount: 0,
       double: computed(() => state.mount * 2), // 计算属性，mount 更新，double随之更新🎃
     });
-    watch(() => {
+    watchEffect(() => {
       console.log(
         `watching：mount is ${state.mount}，double is ${state.double}`
       );
