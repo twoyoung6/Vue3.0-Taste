@@ -20,7 +20,10 @@
     />
   </div>
   <div class="line" id="teleport-id"></div>
-  <setVue class="line" :num="count"></setVue>
+  <!-- render 高阶组件演示 -->
+  <SetVue class="line" :num="count" @change="toggleChange"
+    ><h5>子组件默认插槽展示内容{{ car }}</h5></SetVue
+  >
   <teleport to="#teleport-id">
     <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
     <img src="../assets/laugh.gif" alt="LOGO" />
@@ -41,7 +44,7 @@
 // 导入 鼠标监听模块
 import { useMousePosition } from "../hoc/watchMouse.js";
 import { ref, reactive } from "vue";
-import setVue from "../hoc/Set.vue";
+import SetVue from "../hoc/Set.vue";
 import ReactiveApis from "./ReactiveApis.vue";
 import Compsition from "./Compsition.vue";
 export default {
@@ -53,7 +56,6 @@ export default {
     const object = reactive({ foo: "bar" });
 
     const { x, y } = useMousePosition();
-
     // expose to template
     return {
       count,
@@ -63,7 +65,7 @@ export default {
     };
   },
   name: "HelloWorld",
-  components: { setVue, ReactiveApis, Compsition },
+  components: { SetVue, ReactiveApis, Compsition },
   props: {
     msg: String,
   },
@@ -77,9 +79,16 @@ export default {
         { name: "分享海报", icon: "poster" },
         { name: "二维码", icon: "qrcode" },
       ],
+      car: "🚂",
     };
   },
-  methods: {},
+  methods: {
+    // SetVue 子组件 导出的事件
+    toggleChange(object) {
+      object.foo = object.foo == "😄" ? "😭" : "😄";
+      this.car = this.car == "🚂" ? "🚕" : "🚂";
+    },
+  },
   created() {
     this.$watch(
       "count",
