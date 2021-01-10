@@ -41,14 +41,14 @@
 // 导入 鼠标监听模块
 import { useMousePosition } from "../hoc/watchMouse.js";
 import { ref, reactive } from "vue";
-import setVue from "./Set.vue";
+import setVue from "../hoc/Set.vue";
 import ReactiveApis from "./ReactiveApis.vue";
 import Compsition from "./Compsition.vue";
 export default {
   setup() {
     // 在beforeCreate挂钩之前被调用
-    // refAPI 直接创建普通的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
-    // ref(0) === { value: 0 }
+    // ref API 直接创建 基础数据类型 的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
+    // 原理是 将基础数据类型 0 处理成 用 Proxy 的封装，ref(0) === { value: 0 }
     const count = ref(0);
     const object = reactive({ foo: "bar" });
 
@@ -69,7 +69,6 @@ export default {
   },
   data() {
     return {
-      count: 0,
       showShare: false,
       options: [
         { name: "微信", icon: "wechat" },
