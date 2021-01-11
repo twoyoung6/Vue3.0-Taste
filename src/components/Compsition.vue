@@ -23,7 +23,7 @@ export default {
       default: {},
     },
   },
-  setup() {
+  setup(props, context) {
     // 🍖 reactive 创建反应性对象【当反应状态更改时，视图会自动更新】
     const state = reactive({
       mount: 0,

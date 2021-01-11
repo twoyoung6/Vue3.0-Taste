@@ -10,6 +10,8 @@
       count is: {{ count }}
     </van-button>
   </div>
+  <!-- reactive 演示 -->
+  <Reactive class="line" :age="count">可乐</Reactive>
   <div class="line">
     <van-cell title="vant 分享面板" @click="showShare = true" icon="wechat" />
     <van-share-sheet
@@ -45,10 +47,11 @@ import { ref, reactive } from "vue";
 import SetVue from "../hoc/Set.vue";
 import { useMousePosition } from "../hoc/watchMouse";
 import Compsition from "../components/Compsition.vue";
+import Reactive from "../components/Reactive.vue";
 export default {
   name: "HelloWorld",
-  components: { SetVue, Compsition },
-  setup() {
+  components: { SetVue, Compsition, Reactive },
+  setup(props, context) {
     // 在beforeCreate挂钩之前被调用
     // ref API 直接创建 基础数据类型 的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
     // 原理是 将基础数据类型 0 处理成 用 Proxy 的封装，ref(0) === { value: 0 }

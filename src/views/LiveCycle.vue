@@ -39,7 +39,7 @@ export default {
 
   // 讨论: 有多少种方式, 可以判断出某个函数 当前处于哪个函数?
   //       比如有多层嵌套的组件是否有影响
-  setup() {
+  setup(props, context) {
     onMounted(() => {
       console.log("is mounted!");
     });

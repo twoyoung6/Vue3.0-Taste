@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const HelloWorld = () => import(/* webpackChunkName: "HelloWorld" */ "../views/HelloWorld.vue");
 const LiveCycle = () => import(/* webpackChunkName: "LiveCycle" */ "../views/LiveCycle.vue");
 const TodoList = () => import(/* webpackChunkName: "TodoList" */ "../views/TodoList.vue");
+const VuexShow = () => import(/* webpackChunkName: "VuexShow" */ "../views/VuexShow.vue");
+
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 export default createRouter({
@@ -21,5 +23,9 @@ export default createRouter({
       path: '/todo-list',
       name: 'TodoList',
       component: TodoList
+    }, {
+      path: '/vuex-show',
+      name: 'VuexShow',
+      component: VuexShow
     }]
 })
