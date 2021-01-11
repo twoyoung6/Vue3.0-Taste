@@ -1,14 +1,14 @@
 <template>
   <h2>{{ msg }}</h2>
-  <em>均采用单文件组件语法 .vue 演示</em>
+  <em>部分还是采用 vue2.x 单文件组件 .vue 语法演示</em>
   <div class="line">
-    <van-button type="primary" size="normal" @click.prevent="count++">
+    <van-button
+      color="linear-gradient(to right, #d9822b, #0d8050)"
+      size="normal"
+      @click.prevent="count++"
+    >
       count is: {{ count }}
     </van-button>
-    <p>
-      Edit <code>components/HelloWorld.vue</code> to test hot module
-      replacement.
-    </p>
   </div>
   <div class="line">
     <van-cell title="vant 分享面板" @click="showShare = true" icon="wechat" />
@@ -21,14 +21,13 @@
   </div>
   <div class="line" id="teleport-id"></div>
   <!-- render 高阶组件演示 -->
-  <SetVue class="line" :num="count" @change="toggleChange"
-    ><h5>子组件默认插槽展示内容{{ car }}</h5></SetVue
-  >
+  <SetVue class="line" :num="count" @change="toggleChange">
+    <h5>子组件默认插槽展示内容{{ car }}</h5>
+  </SetVue>
   <teleport to="#teleport-id">
     <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
     <img src="../assets/laugh.gif" alt="LOGO" />
   </teleport>
-  <!-- <ReactiveApis class="line"></ReactiveApis> -->
   <div class="line">
     <p>
       <em>setup()</em> 函数组件内部使用Composition API的入口点，创建组件实例。
@@ -42,12 +41,13 @@
 
 <script>
 // 导入 鼠标监听模块
-import { useMousePosition } from "../hoc/watchMouse.js";
 import { ref, reactive } from "vue";
 import SetVue from "../hoc/Set.vue";
-import ReactiveApis from "./ReactiveApis.vue";
-import Compsition from "./Compsition.vue";
+import { useMousePosition } from "../hoc/watchMouse";
+import Compsition from "../components/Compsition.vue";
 export default {
+  name: "HelloWorld",
+  components: { SetVue, Compsition },
   setup() {
     // 在beforeCreate挂钩之前被调用
     // ref API 直接创建 基础数据类型 的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
@@ -64,8 +64,6 @@ export default {
       y,
     };
   },
-  name: "HelloWorld",
-  components: { SetVue, ReactiveApis, Compsition },
   props: {
     msg: String,
   },

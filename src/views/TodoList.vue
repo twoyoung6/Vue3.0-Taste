@@ -35,7 +35,7 @@
 </template>
 
 <script>
-// 在vue2中 data 在vue3中使用 reactive代替
+// 在vue2中 data 在vue3中使用 ref、reactive代替
 import { reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 export default {
@@ -58,7 +58,12 @@ export default {
         {
           id: 3,
           done: false,
-          text: "打豆豆",
+          text: "撸猫",
+        },
+        {
+          id: 4,
+          done: false,
+          text: "打僵尸",
         },
       ],
       todo: "",
