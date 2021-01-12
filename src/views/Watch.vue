@@ -58,6 +58,7 @@ export default {
 };
 </script>
 <style lang="css" scoped>
+/* /deep/ and >>> 已经被弃用，请使用 ::v-deep() */
 .watch-demo ::v-deep(.van-button) {
   display: block;
   margin: 20px auto;
