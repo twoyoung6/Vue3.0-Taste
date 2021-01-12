@@ -58,7 +58,7 @@ export default {
 };
 </script>
 <style lang="css" scoped>
-.watch-demo ::v-deep .van-button {
+.watch-demo ::v-deep(.van-button) {
   display: block;
   margin: 20px auto;
 }

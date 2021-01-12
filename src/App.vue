@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="../public/images/logo.png" />
+  <img alt="Vue logo" src="./assets/images/logo.png" />
   <router-view></router-view>
   <!-- <HelloWorld msg="👺Hello Vue 3.0 + Vite" /> -->
 </template>
