@@ -2,11 +2,11 @@
   <div>
     <em>Vuex 的演示</em>
     <p>{{ name }}</p>
-    <van-button @click="updateName('+')">点击改变名字</van-button>
-    <br />
-    <van-button @click="deferName('+')">改回来</van-button>
+    <van-button icon="plus" @click="updateName('🔑')">点击改变名字</van-button>
 
-    <p>{{ fullName }}</p>
+    <van-button icon="flower-o" @click="deferName('+')">改回来</van-button>
+
+    <p>静态状态：{{ fullName }}</p>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
     // 4: action一个意思
     const deferName = () => store.dispatch("deferName");
 
-    // 5: getter 没变化
+    // 5: getter 没变化（静态状态）
     const fullName = computed(() => store.getters.fullName);
     return {
       name,
