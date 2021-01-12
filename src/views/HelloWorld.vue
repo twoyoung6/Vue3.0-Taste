@@ -28,7 +28,7 @@
   </SetVue>
   <teleport to="#teleport-id">
     <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
-    <img src="../assets/images/laugh.gif" alt="LOGO" />
+    <img src="../../public/images/laugh.gif" alt="LOGO" />
   </teleport>
   <div class="line">
     <p>

@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/images/logo.png" />
+  <img alt="Vue logo" src="../public/images/logo.png" />
   <router-view></router-view>
   <!-- <HelloWorld msg="👺Hello Vue 3.0 + Vite" /> -->
 </template>
@@ -20,7 +20,7 @@ export default {
 };
 </script>
 <style css>
-/* 全局 主题色自定义变量 */
+/* 全局 主题色自定义变量；将声明添加到:root伪类来使它们全局可用，以便所有其他选择器都可以继承它 */
 :root {
   --font-color: #0f9960;
 }
