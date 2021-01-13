@@ -80,14 +80,14 @@ export default {
         { name: "分享海报", icon: "poster" },
         { name: "二维码", icon: "qrcode" },
       ],
-      car: "🚂",
+      car: "🚕",
     };
   },
   methods: {
     // SetVue 子组件 导出的事件
     toggleChange(object) {
       object.foo = object.foo == "😄" ? "😭" : "😄";
-      this.car = this.car == "🚂" ? "🚕" : "🚂";
+      this.car = this.car == "🚕" ? "🚲" : "🚕";
     },
   },
   created() {

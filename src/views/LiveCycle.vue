@@ -11,21 +11,26 @@
       </div>
     </div>
     <b>2.x与 3.0的生命周期对照：</b>
-    <p>beforeCreate → 使用 setup() ；</p>
-    <p>created → 使用 setup() ；</p>
-    <p>beforeMount → onBeforeMount ；</p>
-    <p>mounted → onMounted ；</p>
-    <p>beforeUpdate → onBeforeUpdate ；</p>
-    <p>updated → onUpdated ；</p>
-    <p>beforeDestroy → onBeforeUnmount ；</p>
-    <p>destroyed → onUnmounted ；</p>
-    <p>errorCaptured → onErrorCaptured ；</p>
+    <table>
+      <thead>
+        <th>vue2.x</th>
+        <th></th>
+        <th>vue3.0</th>
+      </thead>
+      <tbody>
+        <tr v-for="(trItem, index) in tableData" :key="index">
+          <td>{{ trItem.two }}</td>
+          <td>→</td>
+          <td>{{ trItem.three }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 //这些生命周期注册方法只能用在 setup 钩子中
-import { onMounted, onUpdated, onBeforeUnmount, reactive } from "vue";
+import { onMounted, onUpdated, onBeforeUnmount, reactive, ref } from "vue";
 export default {
   name: "LiveCycle",
   // 1: setup显得冗长, 可以自己动手做一些插件来优化
@@ -40,6 +45,44 @@ export default {
   // 讨论: 有多少种方式, 可以判断出某个函数 当前处于哪个函数?
   //       比如有多层嵌套的组件是否有影响
   setup(props, context) {
+    const tableData = ref([
+      {
+        two: "beforeCreate",
+        three: "使用 setup()",
+      },
+      {
+        two: "created",
+        three: "使用 setup()",
+      },
+      {
+        two: "beforeMount",
+        three: "onBeforeMount",
+      },
+      {
+        two: "mounted",
+        three: "onMounted",
+      },
+      {
+        two: "beforeUpdate",
+        three: "onBeforeUpdate",
+      },
+      {
+        two: "updated",
+        three: "onUpdated",
+      },
+      {
+        two: "beforeDestroy",
+        three: "onBeforeUnmount",
+      },
+      {
+        two: "destroyed",
+        three: "onUnmounted",
+      },
+      {
+        two: "errorCaptured",
+        three: "onErrorCaptured",
+      },
+    ]);
     onMounted(() => {
       console.log("is mounted!");
     });
@@ -58,6 +101,7 @@ export default {
     return {
       obj,
       add,
+      tableData,
     };
   },
 };
@@ -66,5 +110,19 @@ export default {
 p {
   text-align: left;
   vertical-align: middle;
+}
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+table thead {
+  color: #fff;
+  background: var(--font-color);
+}
+table tr:nth-child(odd) {
+  background-color: rgb(245, 225, 229);
+}
+table tr:nth-child(even) {
+  background-color: rgb(211, 209, 241);
 }
 </style>
