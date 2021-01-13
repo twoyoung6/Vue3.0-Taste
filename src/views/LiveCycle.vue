@@ -14,7 +14,7 @@
     <table>
       <thead>
         <th>vue2.x</th>
-        <th></th>
+        <th>change</th>
         <th>vue3.0</th>
       </thead>
       <tbody>
@@ -119,10 +119,16 @@ table thead {
   color: #fff;
   background: var(--font-color);
 }
+thead th {
+  height: 40px;
+}
+tr td {
+  height: 28px;
+}
 table tr:nth-child(odd) {
-  background-color: rgb(245, 225, 229);
+  background-color: rgb(245, 241, 225);
 }
 table tr:nth-child(even) {
-  background-color: rgb(211, 209, 241);
+  background-color: rgb(243, 232, 232);
 }
 </style>

@@ -4,7 +4,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  font-size: 14px;
+  font-size: 16px;
   background: #10161a0d;
   min-height: 100vh;
 }
@@ -24,6 +24,7 @@ img {
 em {
   font-style: normal;
   padding: 2px 6px;
+  margin: 0 4px;
   background-color: rgb(231, 227, 225);
   color: rgb(0, 0, 0);
   font-size: 12px;

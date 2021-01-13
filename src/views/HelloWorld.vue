@@ -10,8 +10,25 @@
       count is: {{ count }}
     </van-button>
   </div>
+  <div class="line">
+    <p>
+      <em>setup()</em> 函数组件内部使用Composition API的入口点，创建组件实例。
+    </p>
+    {{ count }} {{ object.foo }}
+  </div>
   <!-- reactive 演示 -->
   <Reactive class="line" :age="count">可乐</Reactive>
+  <!-- render 高阶组件演示 -->
+  <SetVue class="line" :num="count" @change="toggleChange">
+    <h5>子组件默认插槽展示内容{{ car }}</h5>
+  </SetVue>
+  <Compsition>
+    <b>当前鼠标位置：X：{{ x }}，Y：{{ y }}</b>
+  </Compsition>
+  <teleport to="#teleport-id">
+    <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
+    <img src="../assets/images/laugh.gif" alt="laugh" />
+  </teleport>
   <div class="line">
     <van-cell title="vant 分享面板" @click="showShare = true" icon="wechat" />
     <van-share-sheet
@@ -22,23 +39,6 @@
     />
   </div>
   <div class="line" id="teleport-id"></div>
-  <!-- render 高阶组件演示 -->
-  <SetVue class="line" :num="count" @change="toggleChange">
-    <h5>子组件默认插槽展示内容{{ car }}</h5>
-  </SetVue>
-  <teleport to="#teleport-id">
-    <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
-    <img src="../assets/images/laugh.gif" alt="laugh" />
-  </teleport>
-  <div class="line">
-    <p>
-      <em>setup()</em> 函数组件内部使用Composition API的入口点，创建组件实例。
-    </p>
-    {{ count }} {{ object.foo }}
-  </div>
-  <Compsition>
-    <b>当前鼠标位置：X：{{ x }}，Y：{{ y }}</b>
-  </Compsition>
 </template>
 
 <script>
@@ -51,12 +51,10 @@ import Reactive from "../components/Reactive.vue";
 export default {
   name: "HelloWorld",
   components: { SetVue, Compsition, Reactive },
+  // setup 在beforeCreate挂钩之前被调用;
   setup(props, context) {
-    // 在beforeCreate挂钩之前被调用
-    // ref API 直接创建 基础数据类型 的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
-    // 原理是 将基础数据类型 0 处理成 用 Proxy 的封装，ref(0) === { value: 0 }
     const count = ref(0);
-    const object = reactive({ foo: "bar" });
+    const object = reactive({ foo: "bar", hoo: "hua" });
 
     const { x, y } = useMousePosition();
     // expose to template
