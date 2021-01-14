@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
   alias: {
     // 键必须以斜线开始和结束
-    '/@/': path.resolve(__dirname, './src')
+    '/@/': path.resolve(__dirname, 'src'),
   },
   hostname: 'localhost',
   port: 6060,
@@ -29,7 +29,7 @@ module.exports = {
     '/api': {
       target: '',
       changeOrigin: true,
-      rewrite: path => path.replace(/^\/api/, '')
-    }
-  }
+      rewrite: (path) => path.replace(/^\/api/, ''),
+    },
+  },
 }

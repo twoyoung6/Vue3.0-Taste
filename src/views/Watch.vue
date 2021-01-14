@@ -7,6 +7,9 @@
     <van-button icon="play-circle-o" type="warning" @click="addn3">
       n3增加--{{ n3 }}
     </van-button>
+    <van-button icon="info" type="info" @click="stopWatch">
+      停止 n2 和 n3 的监听
+    </van-button>
   </div>
 </template>
 
@@ -30,13 +33,13 @@ export default {
     );
     // 2: 监听多个
     // 数组的形式定义多个, 这就出现问题了吧, 如果我观察的对象就是个数组, 并且每一项都是一个返回值的函数, 岂不是会被他误认为是多监控的结构, 苦恼
-    watch(
+    const watchN = watch(
       [() => n2.value, () => n3.value],
       ([curN2, curN3], [oldN2, oldN3]) => {
         // curN2 是 n2的新值   oldN2 是 n2的老值
         // curN3 是 n3的新值  oldN3 是 n3的老值
-        console.log("新值 与 老值 是这种对应关系", curN2, oldN2);
-        console.log("新值 与 老值 是这种对应关系", curN3, oldN3);
+        console.log(`n2 新值 ${curN2} 与 老值 ${oldN2}`);
+        console.log(`n3 新值 ${curN3} 与 老值 ${oldN3}`);
       }
     );
 
@@ -49,6 +52,10 @@ export default {
     function addn3() {
       n3.value++;
     }
+    // 停止监听函数
+    function stopWatch(params) {
+      watchN();
+    }
     return {
       addn1,
       addn2,
@@ -56,6 +63,7 @@ export default {
       n1,
       n2,
       n3,
+      stopWatch,
     };
   },
 };

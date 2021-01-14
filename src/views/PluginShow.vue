@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { useString } from "../../plugin/string.js";
+import { useString } from "../plugin/string";
 export default {
   name: "PluginShow",
   setup() {

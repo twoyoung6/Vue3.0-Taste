@@ -100,6 +100,7 @@ export default {
 <style scoped>
 .tag {
   flex-wrap: wrap;
+  display: inline-flex;
 }
 .van-button {
   margin: 4px 0;

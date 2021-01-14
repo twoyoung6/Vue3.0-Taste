@@ -1,21 +1,56 @@
 <template>
-  <img alt="Vue logo" src="./assets/images/logo.png" />
+  <!-- <img alt="Vue logo" src="./assets/images/logo.png" /> -->
+  <van-grid clickable :column-num="4">
+    <van-grid-item
+      v-for="(item, index) in routes"
+      :icon="icon(index)"
+      :text="item.name"
+      :to="item.path"
+      :key="index"
+    />
+  </van-grid>
   <router-view></router-view>
   <!-- <HelloWorld msg="👺Hello Vue 3.0 + Vite" /> -->
 </template>
 
 <script>
-import { provideString } from "../plugin/string";
+import { provideString } from "./plugin/string";
 import { useMousePosition } from "./hoc/watchMouse";
+import { computed } from "vue";
+import router from "./router";
 export default {
   name: "App",
   setup() {
+    const icons = [
+      "home-o",
+      "fire-o",
+      "gem-o",
+      "music-o",
+      "points",
+      "balance-o",
+      "smile-o",
+      "exchange",
+    ];
+    const routes = router.getRoutes().map((val) => {
+      return {
+        name: val.meta.name,
+        path: val.path,
+      };
+    });
+    let icon = function (index) {
+      return icons[index];
+    };
     // 全局注入插件或者变量
     provideString({
       tool1: "我是个 axios 封装",
       tool2: "我是个 lodash 封装",
       tool3: useMousePosition,
     });
+
+    return {
+      routes,
+      icon,
+    };
   },
 };
 </script>
