@@ -22,7 +22,7 @@ export default {
     // 如果监听的是一个对象里面的某个属性, 那就需要这种函数的写法了, 比2.x的字符串写法高明很多
 
     watch(
-      () => n1.value,
+      () => n1.value, // 或者直接写 'n1'
       (val, oldVal) => {
         console.log("新值", val);
         console.log("老值", oldVal);
@@ -30,12 +30,15 @@ export default {
     );
     // 2: 监听多个
     // 数组的形式定义多个, 这就出现问题了吧, 如果我观察的对象就是个数组, 并且每一项都是一个返回值的函数, 岂不是会被他误认为是多监控的结构, 苦恼
-    watch([() => n2.value, () => n3.value], ([val, val3], [val2, val4]) => {
-      // val 是 n2的新值   val2是 n2的老值
-      // val3 是 n3的新值  val4是 n3的老值
-      console.log("新值 与 老值 是这种对应关系", val, val2);
-      console.log("新值 与 老值 是这种对应关系", val3, val4);
-    });
+    watch(
+      [() => n2.value, () => n3.value],
+      ([curN2, curN3], [oldN2, oldN3]) => {
+        // curN2 是 n2的新值   oldN2 是 n2的老值
+        // curN3 是 n3的新值  oldN3 是 n3的老值
+        console.log("新值 与 老值 是这种对应关系", curN2, oldN2);
+        console.log("新值 与 老值 是这种对应关系", curN3, oldN3);
+      }
+    );
 
     function addn1() {
       n1.value++;
