@@ -11,11 +11,6 @@ export default {
     const object = reactive({ foo: "😄" });
     // toRefs 深度转化 复杂数据类型的 响应式属性， toRefs(object) === proxy({ foo: proxy({ value: "😄" }) })
     // toRef const foo = toRef(object, "foo")
-    // 监听传入 props
-    watchEffect(() => {
-      console.log(`num is: ` + attrs.num); // Will not be reactive!
-      count.value = attrs.num;
-    });
 
     // 导出点击切换事件(父子组建通信)
     function toggleChange() {

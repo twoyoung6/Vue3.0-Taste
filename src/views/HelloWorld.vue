@@ -54,7 +54,7 @@ export default {
   setup(props, context) {
     // 在beforeCreate挂钩之前被调用
     // ref API 直接创建 基础数据类型 的 可变性引用【为了将反应性值作为变量传递，而不必依赖对的 this 的访问】
-    // 原理是 将基础数据类型 0 处理成 用 Proxy 的封装，ref(0) === { value: 0 }
+    // 原理是 将基础数据类型 0 处理成 用 Proxy 的封装，ref(0) === proxy{ value: 0 }
     const count = ref(0);
     const object = reactive({ foo: "bar" });
 
