@@ -8,6 +8,17 @@
   background: #10161a0d;
   min-height: 100vh;
 }
+.van-grid-item__content--center {
+  justify-content: flex-start;
+}
+.van-grid-item__content {
+  padding: 5px;
+}
+.van-grid-item__icon {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #4caf50;
+}
 img {
   width: 60px;
   padding-top: 20px;

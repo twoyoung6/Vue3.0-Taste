@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="tag">
+    <div class="tag" ref="refNode">
       <em>ref</em><em>reactive</em><em>toRef</em><em>toRefs</em>
       <em>shallowReactive</em><em>shallowRef</em>
     </div>
@@ -27,7 +27,15 @@
   </div>
 </template>
 <script>
-import { ref, reactive, toRefs, toRef, shallowRef, shallowReactive } from "vue";
+import {
+  ref,
+  reactive,
+  toRefs,
+  toRef,
+  shallowRef,
+  shallowReactive,
+  onMounted,
+} from "vue";
 export default {
   name: "Reactive",
   setup(props, context) {
@@ -84,6 +92,10 @@ export default {
     };
     const state = shallowReactive(data);
 
+    const refNode = ref(null);
+    onMounted(() => {
+      console.log("ref 获取 DOM---", refNode.value);
+    });
     return {
       ...obj, // 这样写不好, 里面会失去响应式
       obj, // 这样写那么外面就要都基于obj 来调取, 类型{{ obj.age }}
@@ -93,6 +105,7 @@ export default {
       addObj,
       addRef,
       addToref,
+      refNode,
     };
   },
 };
