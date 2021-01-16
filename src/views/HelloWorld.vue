@@ -2,6 +2,15 @@
   <h2>{{ msg }}</h2>
   <em>部分还是采用 vue2.x 单文件组件 .vue 语法演示</em>
   <div class="line">
+    <em>Composition API</em>
+    <p>Composition API为我们提供了更为灵活并且模块化的代码组织结构。</p>
+    <p>
+      1.可以将代码组织为每个函数都处理特定功能的函数，而不必总是通过选项来组织代码。
+    </p>
+    <p>2. 使在组件之间，甚至外部组件之间，提取和重用逻辑变得更加简单。</p>
+    <b>当前鼠标位置：X：{{ x }}，Y：{{ y }}</b>
+  </div>
+  <div class="line">
     <van-button
       color="linear-gradient(to right, #d9822b, #0d8050)"
       size="normal"
@@ -22,9 +31,7 @@
   <SetVue class="line" :num="count" @change="toggleChange">
     <h5>子组件默认插槽展示内容{{ car }}</h5>
   </SetVue>
-  <Compsition>
-    <b>当前鼠标位置：X：{{ x }}，Y：{{ y }}</b>
-  </Compsition>
+
   <div class="line" id="teleport-id"></div>
   <teleport to="#teleport-id">
     <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
@@ -46,11 +53,10 @@
 import { ref, reactive } from "vue";
 import SetVue from "../hoc/Set.vue";
 import { useMousePosition } from "../hoc/watchMouse";
-import Compsition from "../components/Compsition.vue";
 import Reactive from "../components/Reactive.vue";
 export default {
   name: "HelloWorld",
-  components: { SetVue, Compsition, Reactive },
+  components: { SetVue, Reactive },
   // setup 在beforeCreate挂钩之前被调用;
   setup(props, context) {
     const count = ref(0);

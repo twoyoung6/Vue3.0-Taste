@@ -4,6 +4,21 @@
       <em>ref</em><em>reactive</em><em>toRef</em><em>toRefs</em>
       <em>shallowReactive</em><em>shallowRef</em>
     </div>
+    <!-- ref 获取 DOM -->
+    <van-cell
+      :ref="
+        (el) => {
+          itemsNode[index] = el;
+        }
+      "
+      v-for="(item, index) in 3"
+      :key="item"
+      icon="audio"
+      title="ref dom"
+      :value="item"
+      label="ref 获取 DOM 演示"
+    >
+    </van-cell>
     <div>{{ name }} <slot></slot> 今年 {{ age }}岁</div>
     <van-button type="info" size="mini" @click="addObj">
       obj age: {{ obj.age }}
@@ -93,8 +108,9 @@ export default {
     const state = shallowReactive(data);
 
     const refNode = ref(null);
+    const itemsNode = ref([]);
     onMounted(() => {
-      console.log("ref 获取 DOM---", refNode.value);
+      console.log("ref 获取 DOM---", refNode.value, itemsNode.value[0]);
     });
     return {
       ...obj, // 这样写不好, 里面会失去响应式
@@ -106,6 +122,7 @@ export default {
       addRef,
       addToref,
       refNode,
+      itemsNode,
     };
   },
 };

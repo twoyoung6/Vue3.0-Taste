@@ -1,6 +1,6 @@
 <template>
   <div>
-    <em>Vuex 的演示</em>
+    <em>Vuex</em>的演示
     <p>{{ name }}</p>
     <van-button icon="plus" @click="updateName('🔑')">点击改变名字</van-button>
 

@@ -16,7 +16,6 @@
 <script>
 import { provideString } from "./plugin/string";
 import { useMousePosition } from "./hoc/watchMouse";
-import { computed } from "vue";
 import router from "./router";
 export default {
   name: "App",

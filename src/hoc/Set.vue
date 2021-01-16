@@ -1,6 +1,6 @@
 // 通过 render 函数 h 创建的高阶组件，完全脱离（不需要） vue 实例 this 的调用
 <script>
-import { h, ref, reactive, computed } from "vue";
+import { h, ref, reactive } from "vue";
 
 export default {
   setup(props, context) {
