@@ -10,6 +10,8 @@ const VuexShow = () =>
 const PluginShow = () =>
   import(/* webpackChunkName: "PluginShow" */ '../views/PluginShow.vue')
 const Watch = () => import(/* webpackChunkName: "Watch" */ '../views/Watch.vue')
+const Reactive = () =>
+  import(/* webpackChunkName: "Reactive" */ '../views/Reactive.vue')
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 export default createRouter({
@@ -23,6 +25,14 @@ export default createRouter({
       component: HelloWorld,
       meta: {
         name: '欢迎页-综合演示',
+      },
+    },
+    {
+      path: '/reactive',
+      name: 'Reactive',
+      component: Reactive,
+      meta: {
+        name: 'Reactive 演示',
       },
     },
     {

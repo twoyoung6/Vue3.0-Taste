@@ -25,8 +25,6 @@
     </p>
     {{ count }} {{ object.foo }}
   </div>
-  <!-- reactive 演示 -->
-  <Reactive class="line" :age="count">可乐</Reactive>
   <!-- render 高阶组件演示 -->
   <SetVue class="line" :num="count" @change="toggleChange">
     <h5>子组件默认插槽展示内容{{ car }}</h5>
@@ -50,25 +48,28 @@
 
 <script>
 // 导入 鼠标监听模块
-import { ref, reactive } from "vue";
+import { ref, reactive, getCurrentInstance } from "vue";
 import SetVue from "../hoc/Set.vue";
 import { useMousePosition } from "../hoc/watchMouse";
-import Reactive from "../components/Reactive.vue";
 export default {
   name: "HelloWorld",
-  components: { SetVue, Reactive },
+  components: { SetVue },
   // setup 在beforeCreate挂钩之前被调用;
   setup(props, context) {
     const count = ref(0);
     const object = reactive({ foo: "bar", hoo: "hua" });
 
     const { x, y } = useMousePosition();
+    // 获取 实例 this
+    const instance = getCurrentInstance();
+    console.log("vue 实例 this---", instance);
     // expose to template
     return {
       count,
       object,
       x,
       y,
+      instance,
     };
   },
   props: {

@@ -52,7 +52,8 @@ export default {
       (val, oldVal) => {
         console.log("新值", val);
         console.log("老值", oldVal);
-      }
+      },
+      { immediate: true }
     );
     // 2: 监听多个
     // 数组的形式定义多个, 这就出现问题了吧, 如果我观察的对象就是个数组, 并且每一项都是一个返回值的函数, 岂不是会被他误认为是多监控的结构, 苦恼
