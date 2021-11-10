@@ -12,9 +12,10 @@
     "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.4",
     "@vue/cli-plugin-babel": "^4.5.7",
     "@vue/compiler-sfc": "^3.0.0-rc.1",
     "babel-plugin-import": "^1.13.1",
-    "vite": "^1.0.0-rc.1"
+    "vite": "^2.0.5"
   }
 }

@@ -1,11 +1,9 @@
 const path = require('path')
+import vue from '@vitejs/plugin-vue' // vite 2.0 升级操作
 // vite.config.js # or vite.config.ts
 
 module.exports = {
-  alias: {
-    // 键必须以斜线开始和结束
-    '/@/': path.resolve(__dirname, './src')
-  },
+  plugins: [vue()],
   hostname: 'localhost',
   port: 6060,
   // 是否自动在浏览器打开
@@ -19,6 +17,7 @@ module.exports = {
    * @default '/'
    */
   base: './',
+  assetsDir: "",
   /**
    * 与“根”相关的目录，构建输出将放在其中。如果目录存在，它将在构建之前被删除。
    * @default 'dist'
@@ -31,5 +30,12 @@ module.exports = {
       changeOrigin: true,
       rewrite: path => path.replace(/^\/api/, '')
     }
+  },
+  resolve: {
+    alias: {
+      // 键必须以斜线开始和结束
+      '@': path.resolve(__dirname, './src')
+    },
   }
+
 }

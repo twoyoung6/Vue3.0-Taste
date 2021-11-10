@@ -5,6 +5,7 @@ const TodoList = () => import(/* webpackChunkName: "TodoList" */ "../views/TodoL
 const VuexShow = () => import(/* webpackChunkName: "VuexShow" */ "../views/VuexShow.vue");
 const PluginShow = () => import(/* webpackChunkName: "PluginShow" */ "../views/PluginShow.vue");
 const Watch = () => import(/* webpackChunkName: "Watch" */ "../views/Watch.vue");
+const SrcHtml = () => import(/* webpackChunkName: "SrcHtml" */ "../views/SrcHtml.vue");
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 export default createRouter({
@@ -53,6 +54,13 @@ export default createRouter({
       component: Watch,
       meta: {
         name: 'watch 演示'
+      }
+    }, {
+      path: '/srcHtml',
+      name: 'SrcHtml',
+      component: SrcHtml,
+      meta: {
+        name: 'Src 引入Html'
       }
     }]
 })

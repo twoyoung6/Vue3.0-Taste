@@ -24,6 +24,16 @@
     >
       ageToRef is: {{ ageToRef }}
     </van-button>
+    <div class="line">
+      <span>shallowReactive演示：</span>
+      <span>{{ state.a }}{{ state.first.b }}{{ state.first.second.c }}</span>
+      <van-button
+        color="linear-gradient(to right, #137cbd, #0f9960)"
+        size="mini"
+        @click="changeA"
+        >changeA
+      </van-button>
+    </div>
   </div>
 </template>
 <script>
@@ -70,7 +80,8 @@ export default {
     }
 
     // 4.0 =========shallowReactive============
-    // shallowReactive 监听第一层属性的值 data.a 的值，一旦发生改变，则更新视图；用于 reactive 的性能处理；
+    // shallowReactive 用于 reactive 的性能处理，此API并不会像 reactive 一样对每一层处理成 Proxy，而只处理第一层；
+    // 监听第一层属性的值 data.a 的值，一旦发生改变，则更新视图；
     // 也就是第一层数据 data.a 才是响应式的，只有当 data.a 改变，才会会刷新obj 数据渲染的整个视图；
     // 当 data.a 未更新，即使 data.a.first.b 或者 data.a.first.second.c 发生数据改变，视图也不会更新；
     const data = {
@@ -83,6 +94,9 @@ export default {
       },
     };
     const state = shallowReactive(data);
+    function changeA(params) {
+      state.a = 4;
+    }
 
     return {
       ...obj, // 这样写不好, 里面会失去响应式
@@ -93,6 +107,8 @@ export default {
       addObj,
       addRef,
       addToref,
+      state,
+      changeA,
     };
   },
 };

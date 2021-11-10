@@ -1,7 +1,9 @@
 <template>
-  <img alt="Vue logo" src="./assets/images/logo.png" />
-  <router-view></router-view>
-  <!-- <HelloWorld msg="👺Hello Vue 3.0 + Vite" /> -->
+  <div>
+    <img alt="Vue logo" src="./assets/images/logo.png" />
+    <router-view></router-view>
+    <!-- <HelloWorld msg="👺Hello Vue 3.0 + Vite" /> -->
+  </div>
 </template>
 
 <script>
