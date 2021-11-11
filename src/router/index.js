@@ -6,6 +6,8 @@ const VuexShow = () => import(/* webpackChunkName: "VuexShow" */ "../views/VuexS
 const PluginShow = () => import(/* webpackChunkName: "PluginShow" */ "../views/PluginShow.vue");
 const Watch = () => import(/* webpackChunkName: "Watch" */ "../views/Watch.vue");
 const SrcHtml = () => import(/* webpackChunkName: "SrcHtml" */ "../views/SrcHtml.vue");
+const UseCssModule = () => import(/* webpackChunkName: "UseCssModule" */ "../views/UseCssModule.vue");
+
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
 export default createRouter({
@@ -62,5 +64,13 @@ export default createRouter({
       meta: {
         name: 'Src 引入Html'
       }
-    }]
+    }, {
+      path: '/useCssModule',
+      name: 'UseCssModule',
+      component: UseCssModule,
+      meta: {
+        name: 'css和js互相通信'
+      }
+    }
+  ]
 })
