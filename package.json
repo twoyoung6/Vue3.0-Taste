@@ -2,8 +2,10 @@
   "name": "sail-vue3",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --open",
-    "build": "vite build"
+    "dev": "vite --open --host",
+    "build": "vite build",
+    "build:test": "vite build --mode test",
+    "serve": "vite preview --host"
   },
   "dependencies": {
     "vant": "^3.0.0-beta.3",

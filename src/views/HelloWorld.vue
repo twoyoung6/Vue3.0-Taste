@@ -1,6 +1,7 @@
 <template>
   <h2>{{ msg }}</h2>
   <em>部分还是采用 vue2.x 单文件组件 .vue 语法演示</em>
+  <div class="line" id="teleport-id"></div>
   <div class="line">
     <van-button
       color="linear-gradient(to right, #d9822b, #0d8050)"
@@ -17,17 +18,17 @@
     {{ count }} {{ object.foo }}
   </div>
   <!-- reactive 演示 -->
-  <Reactive class="line" :age="count">可乐</Reactive>
+  <Reac class="line" :age="count">可乐</Reac>
   <!-- render 高阶组件演示 -->
   <SetVue class="line" :num="count" @change="toggleChange">
     <h5>子组件默认插槽展示内容{{ car }}</h5>
   </SetVue>
-  <Compsition>
+  <Compo>
     <b>当前鼠标位置：X：{{ x }}，Y：{{ y }}</b>
-  </Compsition>
+  </Compo>
   <teleport to="#teleport-id">
     <p>我是【内容移动内置组件】<em>teleport</em> 移动的内容</p>
-    <img src="../assets/images/laugh.gif" alt="laugh" />
+    <img src="/images/laugh.gif" alt="laugh" />
   </teleport>
   <div class="line">
     <van-cell title="vant 分享面板" @click="showShare = true" icon="wechat" />
@@ -38,7 +39,6 @@
       description="描述信息"
     />
   </div>
-  <div class="line" id="teleport-id"></div>
 </template>
 
 <script>
@@ -46,13 +46,14 @@
 import { ref, reactive } from "vue";
 import SetVue from "../hoc/Set.vue";
 import { useMousePosition } from "../hoc/watchMouse";
-import Compsition from "../components/Compsition.vue";
-import Reactive from "../components/Reactive.vue";
+import Compo from "../components/Compo.vue";
+import Reac from "../components/Reac.vue";
 export default {
   name: "HelloWorld",
-  components: { SetVue, Compsition, Reactive },
-  // setup 在beforeCreate挂钩之前被调用;
+  components: { SetVue, Compo, Reac },
+  // setup 在 beforeCreate 挂钩之前被调用;
   setup(props, context) {
+    console.log("import.meta", import.meta.env);
     const count = ref(0);
     const object = reactive({ foo: "bar", hoo: "hua" });
 
@@ -102,3 +103,9 @@ export default {
   },
 };
 </script>
+<style>
+#teleport-id img {
+  width: 120px;
+  height: auto;
+}
+</style>

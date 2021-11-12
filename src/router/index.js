@@ -5,7 +5,7 @@ const TodoList = () => import(/* webpackChunkName: "TodoList" */ "../views/TodoL
 const VuexShow = () => import(/* webpackChunkName: "VuexShow" */ "../views/VuexShow.vue");
 const PluginShow = () => import(/* webpackChunkName: "PluginShow" */ "../views/PluginShow.vue");
 const Watch = () => import(/* webpackChunkName: "Watch" */ "../views/Watch.vue");
-const SrcHtml = () => import(/* webpackChunkName: "SrcHtml" */ "../views/SrcHtml.vue");
+// const SrcHtml = () => import(/* webpackChunkName: "SrcHtml" */ "../views/SrcHtml.vue");
 const UseCssModule = () => import(/* webpackChunkName: "UseCssModule" */ "../views/UseCssModule.vue");
 
 
@@ -57,14 +57,16 @@ export default createRouter({
       meta: {
         name: 'watch 演示'
       }
-    }, {
-      path: '/srcHtml',
-      name: 'SrcHtml',
-      component: SrcHtml,
-      meta: {
-        name: 'Src 引入Html'
-      }
-    }, {
+    },
+    // {
+    //   path: '/srcHtml',
+    //   name: 'SrcHtml',
+    //   component: SrcHtml,
+    //   meta: {
+    //     name: 'Src 引入Html'
+    //   }
+    // },
+    {
       path: '/useCssModule',
       name: 'UseCssModule',
       component: UseCssModule,

@@ -18,11 +18,19 @@ module.exports = {
    */
   base: './',
   assetsDir: "",
-  /**
+  build: {
+    /**
    * 与“根”相关的目录，构建输出将放在其中。如果目录存在，它将在构建之前被删除。
    * @default 'dist'
    */
-  outDir: 'dist',
+    outDir: 'dist',
+    // 剥离vue外部引入
+    rollupOptions: {
+      external: {
+        vue: 'Vue'
+      }
+    }
+  },
   // 反向代理
   proxy: {
     '/api': {
@@ -36,6 +44,5 @@ module.exports = {
       // 键必须以斜线开始和结束
       '@': path.resolve(__dirname, './src')
     },
-  }
-
+  },
 }

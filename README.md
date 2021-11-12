@@ -15,3 +15,23 @@
     ├─router           // 路由
     └─views           // page 页面
 ```
+
+# 部署
+
+预览本地构建（本地静态服务预览构建出来的生产包资源 dist）
+
+```
+npm run serve
+```
+
+本地调试开发
+
+```
+npm run dev
+```
+
+生产构建
+
+```
+npm run build
+```
