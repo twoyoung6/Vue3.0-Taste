@@ -1,10 +1,26 @@
 <template>
   <div>
-    <div class="tag">
+    <div class="tag" ref="refNode">
+      响应式 API：
       <em>ref</em><em>reactive</em><em>toRef</em><em>toRefs</em>
-      <em>shallowReactive</em><em>shallowRef</em>
+      <em>shallowReactive</em><em>shallowRef</em><em>triggerRef</em>
     </div>
-    <div>{{ name }} <slot></slot> 今年 {{ age }}岁</div>
+    <!-- ref 获取 DOM -->
+    <van-cell
+      :ref="
+        (el) => {
+          itemsNode[index] = el;
+        }
+      "
+      v-for="(item, index) in 3"
+      :key="item"
+      icon="audio"
+      title="ref dom"
+      :value="item"
+      label="ref 获取 DOM 演示"
+    >
+    </van-cell>
+    <div>{{ name }} 可乐 今年 {{ age }}岁</div>
     <van-button type="info" size="mini" @click="addObj">
       obj age: {{ obj.age }}
     </van-button>
@@ -37,7 +53,16 @@
   </div>
 </template>
 <script>
-import { ref, reactive, toRefs, toRef, shallowRef, shallowReactive } from "vue";
+import {
+  ref,
+  reactive,
+  toRefs,
+  toRef,
+  shallowRef,
+  shallowReactive,
+  onMounted,
+  triggerRef,
+} from "vue";
 export default {
   name: "Reactive",
   setup(props, context) {
@@ -65,7 +90,7 @@ export default {
     const ageToRef = toRef(dog, "age");
     // 3.3 toRefs 深度转化 复杂数据类型的 响应式属性；
     // toRefs(dog) === proxy({ age: proxy({ value: 3 }), name: proxy({ value: "大金毛" }) })
-    const dogToRefs = toRefs(dog);
+    const dogToRefs = toRefs(obj);
     function addObj() {
       obj.age++;
       console.log(`原值：${dog.age}====reactive：${obj.age}`);
@@ -98,6 +123,46 @@ export default {
       state.a = 4;
     }
 
+    // 5.0 =========shallowRef============
+    // stateShallo.value 整个值重新赋值了，视图就才会更新，只修改 stateShallo.value.first.b = 3 不会触发试图更新；
+    // 不过可以借助 triggerRef 来主动触发更新，triggerRef(stateShallo)
+    const shallo = {
+      a: 1,
+      first: {
+        b: 2,
+        second: {
+          c: 3,
+        },
+      },
+    };
+    const stateShallo = shallowRef(shallo);
+    // 只改变内层
+    function change1() {
+      stateShallo.value.first.b = 8;
+      stateShallo.value.first.second.c = 9;
+      // 修改值后立即驱动视图更新
+      triggerRef(stateShallo);
+      console.log(stateShallo);
+    }
+    // .value 整体赋值;
+    function change2(params) {
+      stateShallo.value = {
+        a: 1,
+        first: {
+          b: 8,
+          second: {
+            c: 9,
+          },
+        },
+      };
+    }
+
+    // 6.0 模板 ref 获取 DOM
+    const refNode = ref(null);
+    const itemsNode = ref([]);
+    onMounted(() => {
+      console.log("ref 获取 DOM---", refNode.value, itemsNode.value[0]);
+    });
     return {
       ...obj, // 这样写不好, 里面会失去响应式
       obj, // 这样写那么外面就要都基于obj 来调取, 类型{{ obj.age }}
@@ -107,8 +172,15 @@ export default {
       addObj,
       addRef,
       addToref,
+<<<<<<< HEAD:src/views/Reac.vue
       state,
       changeA,
+=======
+      refNode,
+      itemsNode,
+      stateShallo,
+      state,
+>>>>>>> e2e97612ef429ed9d77ff25bfa06eeb3c78086fa:src/views/Reactive.vue
     };
   },
 };
@@ -116,8 +188,11 @@ export default {
 <style scoped>
 .tag {
   flex-wrap: wrap;
+  display: inline-flex;
+  justify-content: center;
 }
 .van-button {
-  margin: 4px 0;
+  margin: 10px auto;
+  display: block;
 }
 </style>

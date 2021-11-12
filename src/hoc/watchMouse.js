@@ -1,4 +1,6 @@
 // 导出文件中
+// 将父子组件公共的 变量 及 函数 抽离至单独的 js 文件中并导出，供父子组建使用
+
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export function useMousePosition() {

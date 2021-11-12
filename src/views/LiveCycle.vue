@@ -10,7 +10,7 @@
         <b>{{ obj.count }}</b>
       </div>
     </div>
-    <b>2.x与 3.0的生命周期对照：</b>
+    <b>2.x与 3.0的<em>生命周期</em>对照：</b>
     <table>
       <thead>
         <th>vue2.x</th>

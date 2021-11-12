@@ -3,7 +3,14 @@ import vue from '@vitejs/plugin-vue' // vite 2.0 升级操作
 // vite.config.js # or vite.config.ts
 
 module.exports = {
+<<<<<<< HEAD
   plugins: [vue()],
+=======
+  alias: {
+    // 键必须以斜线开始和结束
+    '/@/': path.resolve(__dirname, 'src'),
+  },
+>>>>>>> e2e97612ef429ed9d77ff25bfa06eeb3c78086fa
   hostname: 'localhost',
   port: 6060,
   // 是否自动在浏览器打开
@@ -36,6 +43,7 @@ module.exports = {
     '/api': {
       target: '',
       changeOrigin: true,
+<<<<<<< HEAD
       rewrite: path => path.replace(/^\/api/, '')
     }
   },
@@ -46,3 +54,9 @@ module.exports = {
     },
   },
 }
+=======
+      rewrite: (path) => path.replace(/^\/api/, ''),
+    },
+  },
+}
+>>>>>>> e2e97612ef429ed9d77ff25bfa06eeb3c78086fa
